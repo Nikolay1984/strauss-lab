@@ -1,0 +1,50 @@
+{
+    "name": "strauss-lab/plugin-b",
+    "description": "Strauss test MU plugin B with psr/log 3.x",
+    "type": "wordpress-muplugin",
+    "require": {
+        "psr/log": "3.0.2"
+    },
+    "require-dev": {
+        "brianhenryie/strauss": "^0.22"
+    },
+    "scripts": {
+        "prefix-namespaces": [
+            "strauss",
+            "@composer dump-autoload"
+        ],
+        "post-install-cmd": [
+            "@prefix-namespaces"
+        ],
+        "post-update-cmd": [
+            "@prefix-namespaces"
+        ]
+    },
+    "extra": {
+        "strauss": {
+            "target_directory": "vendor-prefixed",
+            "namespace_prefix": "StraussLab\\PluginB\\Vendor\\",
+            "classmap_prefix": "StraussLab_PluginB_Vendor_",
+            "constant_prefix": "STRAUSS_LAB_PLUGIN_B_VENDOR_",
+            "packages": [
+                "psr/log"
+            ],
+            "delete_vendor_packages": false,
+            "delete_vendor_files": false,
+            "update_call_sites": true
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "brianhenryie/strauss": true
+        },
+        "sort-packages": true
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true,
+    "autoload": {
+        "psr-4": {
+            "StraussLab\\PluginB\\": "src/"
+        }
+    }
+}
