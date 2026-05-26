@@ -19,7 +19,7 @@ Strauss is not installed as a plugin dependency.
 
 Strauss is expected to be installed globally on the deploy/build server and available at:
 
-/usr/local/bin/strauss
+/usr/local/bin/strauss.phar
 
 Composer hooks run the prefixing step automatically:
 
@@ -43,6 +43,30 @@ Production runtime must require only:
 - plugin-b/vendor-prefixed/autoload.php
 
 Do not require regular vendor/autoload.php in production plugin bootstrap.
+
+## How to run the isolation test
+
+Install Strauss PHAR on the machine where the test is executed:
+
+```bash
+sudo curl -L -o /usr/local/bin/strauss.phar https://github.com/BrianHenryIE/strauss/releases/latest/download/strauss.phar
+sudo chmod +x /usr/local/bin/strauss.phar
+```
+
+Run the full PoC check from the repository root:
+
+```bash
+bin/test-isolation.sh
+```
+
+The test script validates that:
+
+- Composer install works with --no-dev;
+- vendor-prefixed/autoload.php is generated for both plugins;
+- plugin source files are not rewritten;
+- prefixed Psr\Log interfaces exist;
+- global Psr\Log\LoggerInterface is not loaded;
+- plugin-a and plugin-b use different psr/log versions.
 
 ## Expected isolation result
 
