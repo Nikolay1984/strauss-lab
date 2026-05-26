@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace StraussLab\PluginA;
 
-use StraussLab\PluginA\Vendor\Psr\Log\LoggerInterface;
+use Psr\Log\LoggerInterface;
 
 final class Tester
 {

@@ -5,12 +5,9 @@
     "require": {
         "psr/log": "3.0.2"
     },
-    "require-dev": {
-        "brianhenryie/strauss": "^0.22"
-    },
     "scripts": {
         "prefix-namespaces": [
-            "strauss",
+            "/usr/local/bin/strauss",
             "@composer dump-autoload"
         ],
         "post-install-cmd": [
@@ -31,13 +28,10 @@
             ],
             "delete_vendor_packages": false,
             "delete_vendor_files": false,
-            "update_call_sites": true
+            "update_call_sites": false
         }
     },
     "config": {
-        "allow-plugins": {
-            "brianhenryie/strauss": true
-        },
         "sort-packages": true
     },
     "minimum-stability": "stable",
@@ -46,5 +40,6 @@
         "psr-4": {
             "StraussLab\\PluginB\\": "src/"
         }
-    }
+    },
+    "license": "proprietary"
 }
