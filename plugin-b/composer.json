@@ -7,7 +7,7 @@
     },
     "scripts": {
         "prefix-namespaces": [
-            "/usr/local/bin/strauss",
+            "/usr/local/bin/strauss.phar",
             "@composer dump-autoload"
         ],
         "post-install-cmd": [
