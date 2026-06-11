@@ -21,6 +21,19 @@ Strauss is expected to be installed globally on the deploy/build server and avai
 
 /usr/local/bin/strauss.phar
 
+This PoC is verified with Strauss PHAR version:
+
+0.27.2
+
+Expected version check output:
+
+```bash
+/usr/local/bin/strauss.phar --version
+# strauss 0.27.2
+```
+
+Do not rely on a floating latest version for reproducible build/deploy checks. The infrastructure should use the verified Strauss PHAR version 0.27.2 unless this PoC is re-tested with a newer version.
+
 Composer hooks run the prefixing step automatically:
 
 composer install --working-dir="${ComposerJsonDir}" --optimize-autoloader --no-dev
@@ -46,11 +59,15 @@ Do not require regular vendor/autoload.php in production plugin bootstrap.
 
 ## How to run the isolation test
 
-Install Strauss PHAR on the machine where the test is executed:
+Install Strauss PHAR 0.27.2 on the machine where the test is executed and make it available at:
+
+/usr/local/bin/strauss.phar
+
+Verify the installed version:
 
 ```bash
-sudo curl -L -o /usr/local/bin/strauss.phar https://github.com/BrianHenryIE/strauss/releases/latest/download/strauss.phar
-sudo chmod +x /usr/local/bin/strauss.phar
+/usr/local/bin/strauss.phar --version
+# strauss 0.27.2
 ```
 
 Run the full PoC check from the repository root:
